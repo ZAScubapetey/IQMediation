@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/bezuide3/iqmediation
+    - export DEPLOYPATH=/home/hkdcfgyd/iqmediation
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R docs $DEPLOYPATH
     - /bin/cp -R examples $DEPLOYPATH

@@ -44,6 +44,35 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/demo/demo.css" rel="stylesheet" />
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init("FV0ZZF5HdIClY8fbL");
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("contact-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // these IDs from the previous steps
+            emailjs.sendForm("service_nduqhrf", "template_x18h2u4", this).then(
+              function () {
+                console.log("SUCCESS!");
+                alert("Your mail is sent!");
+                location.reload();
+              },
+              function (error) {
+                console.log("FAILED...", error);
+                alert("Your mail is not sent!");
+              }
+            );
+          });
+      };
+    </script>
+
   </head>
 
   <body class="landing-page sidebar-collapse" id="head">
@@ -657,6 +686,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <input
                         type="text"
                         class="form-control"
+                        name="from_name"
                         placeholder="Name"
                       />
                     </div>
@@ -671,6 +701,7 @@ The above copyright notice and this permission notice shall be included in all c
                       </div>
                       <input
                         type="text"
+                        name="user_email"
                         class="form-control"
                         placeholder="Email"
                       />
@@ -679,7 +710,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <label>Cintact Number</label>
+                    <label>C0ntact Number</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
@@ -688,18 +719,31 @@ The above copyright notice and this permission notice shall be included in all c
                       </div>
                       <input
                         type="telephone"
+                        name="contact_number"
                         class="form-control"
                         placeholder="Contact Number"
                       />
                     </div>
                   </div>
                 </div>
-                <label>Message</label>
-                <textarea
-                  class="form-control"
-                  rows="4"
-                  placeholder="Anything else we should know?"
-                ></textarea>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Message</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                         
+                        </span>
+                      </div>
+                      <input
+                        type="textarea"
+                        name="message"
+                        class="form-control"
+                        placeholder="Anything else we should know?"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-4 ml-auto mr-auto">
                     <button class="btn btn-info btn-lg btn-fill">
